@@ -8,6 +8,7 @@ frontend:
         - mv hugo /usr/bin/hugo
         - rm -rf hugo_extended_${VERSION_HUGO}_Linux-64bit.tar.gz
         - hugo version
+        - npm install 
     build:
       commands:
         - hugo
