@@ -1,0 +1,19 @@
+{{ $htmlTable := .Inner | markdownify }}
+{{ $class := .Get 0 }}
+{{ $highlight := .Get 1 }}
+{{ $old := "<table>" }}
+{{ $new := printf "<table class=\"%s\">" $class }}
+{{ $htmlTable := replace $htmlTable $old $new }}
+{{ if $highlight }}
+{{ template "highlightRow" (dict "tbl" $htmlTable "i" $highlight) }}
+{{ else }}
+{{ $htmlTable  | safeHTML }}
+{{ end }}
+
+
+{{ define "highlightRow" }}
+{{ $htmlTable := replace .tbl "\n" "" }}
+{{ $old := index (findRE "<tr><td>.*?</tr>" (replace $htmlTable "\n" "")) (sub .i 1) }}
+{{ $new := replace $old "<tr>" `<tr class="is-selected">`}}
+{{ replace $htmlTable $old $new | safeHTML }}
+{{ end }}

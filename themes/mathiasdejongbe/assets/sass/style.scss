@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+$family-sans-serif: "Inter", "Helvetica", "Arial", sans-serif;
+$red: #f38ba0;
+$green: #edf6e5;
+$cyan: #b5eaea;
+$navbar-dropdown-offset: -16px;
+
+@import "bulma.sass";
+
+body {
+  background-color: $white;
+}
+
+.section.main {
+  margin: 0 auto;
+}
+
+.navbar {
+  .navbar-brand-logo {
+    &:focus,
+    &:focus-within,
+    &:hover,
+    &.is-active {
+      color: $black-ter;
+    }
+  }
+}
+
+.navbar-brand-logo {
+  letter-spacing: -0.1rem;
+  color: $black-ter;
+}
+
+a.tax-category {
+  color: $red;
+}
+
+.content table {
+  &.center {
+    width: auto;
+    margin: 0 auto;
+  }
+}
