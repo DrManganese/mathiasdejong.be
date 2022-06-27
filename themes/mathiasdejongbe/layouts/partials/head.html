@@ -3,7 +3,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ $sass := resources.Get "/sass/style.scss" }}
     {{ $style := $sass | resources.ToCSS (dict "includePaths" (slice "node_modules/bulma" "assets/scss") "enableSourceMap" (not hugo.IsProduction) "targetPath" "style.css" "outputStyle" "compressed")}}
-    <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+    <!-- TODO: Use absolute url depending on HUGO_ENV -->
+    <link rel="stylesheet" href="{{ $style.Permalink | relURL }}" integrity="{{ $style.Data.Integrity }}">
     {{ $title := print .Site.Title " | " .Title }}
     {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
     <title>{{ $title }}</title>
