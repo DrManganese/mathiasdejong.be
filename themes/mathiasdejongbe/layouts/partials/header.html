@@ -16,6 +16,7 @@
     </div>
     <div id="navbarHeaderMenu" class="navbar-menu">
       <div class="navbar-end">
+        {{ partial "header-socials.html" . }}
         {{ range .Site.Menus.main }}
         {{ $taxonomy := lower .Name }}
         {{ if in "Tags Categories" .Name }}

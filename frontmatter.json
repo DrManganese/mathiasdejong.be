@@ -1,17 +1,92 @@
 {
   "$schema": "https://frontmatter.codes/frontmatter.schema.json",
   "frontMatter.framework.id": "hugo",
-  "frontMatter.content.publicFolder": "static",
+  "frontMatter.content.publicFolder": "public",
   "frontMatter.content.pageFolders": [
     {
       "title": "content",
       "path": "[[workspace]]/content"
     }
   ],
-  "frontMatter.data.folders": [
+  "frontMatter.data.files": [
     {
-      "title": "data",
-      "path": "[[workspace]]/data"
+      "id": "socials",
+      "title": "Socials",
+      "file": "[[workspace]]/data/socials.yaml",
+      "labelField": "platform",
+      "schema": {
+        "title": "Socials",
+        "type": "object",
+        "properties": {
+          "platform": {
+            "type": "string",
+            "title": "Platform"
+          },
+          "handle": {
+            "type": "string",
+            "title": "Handle"
+          },
+          "link": {
+            "type": "string",
+            "title": "Link"
+          },
+          "icon": {
+            "type": "string",
+            "title": "Icon"
+          }
+        },
+        "required": ["handle", "link", "platform"]
+      }
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "pageBundle": false,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "Publishing date",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "title": "Content preview",
+          "name": "preview",
+          "type": "image"
+        },
+        {
+          "title": "Is in draft",
+          "name": "draft",
+          "type": "boolean"
+        },
+        {
+          "title": "Tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "Categories",
+          "name": "categories",
+          "type": "categories"
+        },
+        {
+          "title": "lastmod",
+          "name": "lastmod",
+          "type": "datetime"
+        }
+      ]
     }
   ]
 }

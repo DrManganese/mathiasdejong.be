@@ -26,10 +26,13 @@ body {
     }
   }
 }
+.navbar-item.navbar-vertical-divider {
 
-.navbar-brand-logo {
-  letter-spacing: -0.1rem;
-  color: $black-ter;
+  &::after {
+    content: "|";
+    font-weight: $weight-bold;
+    color: $link;
+  }
 }
 
 a.tax-category {
