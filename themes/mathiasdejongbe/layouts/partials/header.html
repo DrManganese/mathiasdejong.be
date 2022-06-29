@@ -6,7 +6,14 @@
   >
     <div class="navbar-brand">
       <a class="navbar-item has-text-weight-bold is-size-2 pl-0 navbar-brand-logo" href="{{ .Site.BaseURL }}" >
+        {{ if .Site.Params.logo }}
+          <figure class="image mr-1 is-squre">
+            <img src="/{{ .Site.Params.logo }}" alt="" class="is-rounded">
+          </figure>
+        {{ end }}
+      <span>
         Mathias de Jong
+      </span>
       </a>
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarHeaderMenu" >
         <span aria-hidden="true"></span>

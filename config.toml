@@ -4,7 +4,7 @@ title = "Mathias de Jong"
 theme = "mathiasdejongbe"
 
 [params]
-    logo = ""
+    logo = "img/avatar.jpg"
 
 [menu]
     [[menu.main]]
