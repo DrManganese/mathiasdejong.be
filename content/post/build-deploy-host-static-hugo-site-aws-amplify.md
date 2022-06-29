@@ -10,7 +10,7 @@ categories:
 tags:
   - aws
   - hugo
-lastmod: 2022-06-27T22:46:51.685Z
+lastmod: 2022-06-29T18:13:35.014Z
 preview: /img/aws-diagram-amplify-ship.png
 ---
 Nulla incididunt veniam irure eu. Anim magna id ipsum adipisicing nostrud excepteur mollit ea officia. Est cupidatat laboris esse eiusmod consectetur deserunt irure ad eu aute dolor consequat sint aliqua. Mollit ad culpa adipisicing est aliqua sint eiusmod aliquip nulla in ea eu. Anim commodo laboris Lorem culpa enim. Laborum adipisicing fugiat reprehenderit duis adipisicing nostrud duis. Cillum dolor est culpa eu ea nulla incididunt duis Lorem et deserunt aliqua cillum sunt.
