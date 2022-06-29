@@ -1,0 +1,14 @@
+[
+  {
+    "platform": "twitter",
+    "handle": "@Dr_Manganese",
+    "link": "https://twitter.com/Dr_Manganese",
+    "icon": "logo-twitter"
+  },
+  {
+    "platform": "github",
+    "handle": "DrManganese",
+    "link": "https://github.com/DrManganese",
+    "icon": "logo-github"
+  }
+]

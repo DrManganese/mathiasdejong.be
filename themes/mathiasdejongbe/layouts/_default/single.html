@@ -1,0 +1,37 @@
+{{ define "main" }}
+<header class="article-header container is-max-widescreen">
+  <p class="article-meta">
+    In
+    <span class="article-meta-categories">
+      {{- range $i, $c := .Params.categories -}} {{- if $i -}}, {{ end }}
+      <a
+        href='{{ "categories/" | relURL }}{{ . | urlize }}'
+        class="tax-category"
+        >{{ $c }}</a
+      >
+      {{- end -}}
+    </span>
+    &mdash; {{ .PublishDate | time.Format ":date_long" }}
+  </p>
+  <div class="mb-4">
+    <h1 class="title is-1 pb-1">{{ .Title }}</h1>
+    <h2 class="subtitle is-4">{{ .Description }}</h2>
+    {{ partial "breadcrumb" . }}
+  </div>
+  {{ with .Params.preview }}
+  <img src="{{ . }}" alt="Preview for {{ $.Page.Name }}" class="image mb-5" />
+  {{ end }}
+</header>
+
+<article class="article-content container is-max-desktop content">
+  {{ .Content }}
+</article>
+
+<footer class="article-footer container is-max-desktop">
+  <p class="article-tags tags">
+    {{ range .Params.tags }}
+    <a href="/tags/{{ . }}" class="tag is-info tax-tag"> {{ . }} </a>
+    {{ end }}
+  </p>
+</footer>
+{{ end }}

@@ -1,4 +1,21 @@
-baseURL = "http://example.org/"
+baseURL = "https://www.mathiasdejong.be/"
 languageCode = "en-us"
-title = "Mathias' Blog"
-theme = "ananke"
+title = "Mathias de Jong"
+theme = "mathiasdejongbe"
+
+[params]
+    logo = "img/avatar.jpg"
+
+[menu]
+    [[menu.main]]
+        name = "Posts"
+        url = "/post/"
+        weight = 1
+    [[menu.main]]
+        name = "Categories"
+        url = "/categories/"
+        weight = 2
+    [[menu.main]]
+        name = "Tags"
+        url = "/tags/"
+        weight = 3
