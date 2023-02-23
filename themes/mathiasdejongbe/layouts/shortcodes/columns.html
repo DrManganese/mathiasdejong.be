@@ -1,0 +1,21 @@
+{{ $icons := split .Params.icon "," }}
+{{ $iconColor := .Params.iconColor}}
+{{ $contents := (split .Inner "$$") }}
+{{ $len := len $contents }}
+<div class="columns is-vcentered is-gapless mt-3">
+  {{ range $i, $content := $contents }}
+  <div class="column">
+    {{- trim . " \n" | markdownify | htmlUnescape | safeHTML -}}
+  </div>
+  {{ if ne (add $i 1) $len }}
+  <div class="column is-narrow m-2">
+    {{ with cond (eq 1 (len $icons)) (index $icons 0) (index $icons $i) }}
+        {{ $iconAttr := cond (eq (last 4 .) ".svg") "src" "name" | safeHTMLAttr }} 
+        <ion-icon
+            {{ $iconAttr }}="{{ . }}"
+            {{ with $iconColor }}style="color: {{ . }};"{{ end }}
+        ></ion-icon>
+    {{ end }}
+  </div>
+  {{ end }} {{ end }}
+</div>

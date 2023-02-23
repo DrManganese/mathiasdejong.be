@@ -1,0 +1,13 @@
+{{ $src := .Get 0 | .Page.Resources.GetMatch }}
+{{ $iframeAttrs := .Get 1 }}
+<div class="html-preview columns is-vcentered is-gapless">
+    <div class="column">
+        {{ replace $src.Content "<!DOCTYPE html>\n" "" | printf "```html\n%s\n```" | markdownify }}
+    </div>
+    <div class="column is-narrow m-2">
+        <ion-icon name="logo-html5"></ion-icon>
+    </div>
+    <div class="column">
+        <iframe src="{{ $src }}" width="100%" {{ $iframeAttrs | safeHTMLAttr }}></iframe>
+    </div>
+</div>

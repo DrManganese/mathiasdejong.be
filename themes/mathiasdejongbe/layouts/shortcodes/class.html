@@ -1,0 +1,4 @@
+{{ $html := .Inner | markdownify }}
+{{ $classes := delimit .Params " " }}
+{{ $replaced := replaceRE "<(.+)>" `<$1 class="%C%">` $html 1 | safeHTML }}
+{{ replace $replaced "%C%" $classes | safeHTML }}

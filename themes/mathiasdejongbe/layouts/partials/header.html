@@ -5,14 +5,14 @@
     aria-label="main navigation"
   >
     <div class="navbar-brand">
-      <a class="navbar-item has-text-weight-bold is-size-2 pl-0 navbar-brand-logo" href="{{ .Site.BaseURL }}" >
+      <a class="navbar-item has-text-weight-bold is-size-2 is-size-3-mobile pl-0 navbar-brand-logo" href="{{ .Site.BaseURL }}" >
         {{ if .Site.Params.logo }}
-          <figure class="image mr-1 is-squre">
+          <figure class="image mr-1 is-hidden-mobile">
             <img src="/{{ .Site.Params.logo }}" alt="" class="is-rounded">
           </figure>
         {{ end }}
       <span>
-        Mathias de Jong
+        {{ .Site.Title }}
       </span>
       </a>
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarHeaderMenu" >
@@ -25,46 +25,24 @@
       <div class="navbar-end">
         {{ partial "header-socials.html" . }}
         {{ range .Site.Menus.main }}
-        {{ $taxonomy := lower .Name }}
-        {{ if in "Tags Categories" .Name }}
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a href="{{ .URL }}" class="navbar-link">
-              {{ $text := print .Name | safeHTML }} {{ $text }}
-            </a>
-            <div class="navbar-dropdown is-boxed">
-              {{ range (index $.Site.Taxonomies $taxonomy).ByCount }}
-                <a href="/{{ $taxonomy }}/{{ .Name }}" class="navbar-item">{{ .Page.Name }} ({{ .Count }})</a>
-              {{ end }}
+          {{ $taxonomy := lower .Name }}
+          {{ if eq "Tags" .Name }}
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a href="{{ .URL }}" class="navbar-link">
+                {{ $text := print .Name | safeHTML }} {{ $text }}
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                {{ range (index $.Site.Taxonomies $taxonomy).ByCount }}
+                  <a href="/{{ $taxonomy }}/{{ .Name }}" class="navbar-item">{{ .Page.Name }} ({{ .Count }})</a>
+                {{ end }}
+              </div>
             </div>
-          </div>
-        {{ else }}
-          <a href="{{ .URL }}" class="navbar-item">{{ $text := print .Name | safeHTML }} {{ $text }}</a>
-        {{ end }}
-
+          {{ else }}
+            <a href="{{ .URL }}" class="navbar-item">{{ $text := print .Name | safeHTML }} {{ $text }}</a>
+          {{ end }}
         {{ end }}
       </div>
     </div>
   </nav>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Get all "navbar-burger" elements
-      const $navbarBurgers = Array.prototype.slice.call(
-        document.querySelectorAll(".navbar-burger"),
-        0
-      );
-
-      // Add a click event on each of them
-      $navbarBurgers.forEach((el) => {
-        el.addEventListener("click", () => {
-          // Get the target from the "data-target" attribute
-          const target = el.dataset.target;
-          const $target = document.getElementById(target);
-
-          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-          el.classList.toggle("is-active");
-          $target.classList.toggle("is-active");
-        });
-      });
-    });
-  </script>
+  <script src="/navbar-burger.js"></script>
 </header>

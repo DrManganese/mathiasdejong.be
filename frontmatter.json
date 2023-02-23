@@ -1,11 +1,11 @@
 {
   "$schema": "https://frontmatter.codes/frontmatter.schema.json",
   "frontMatter.framework.id": "hugo",
-  "frontMatter.content.publicFolder": "public",
+  "frontMatter.content.publicFolder": "static",
   "frontMatter.content.pageFolders": [
     {
-      "title": "content",
-      "path": "[[workspace]]/content"
+      "title": "posts",
+      "path": "[[workspace]]/content/posts"
     }
   ],
   "frontMatter.data.files": [
@@ -35,14 +35,19 @@
             "title": "Icon"
           }
         },
-        "required": ["handle", "link", "platform"]
+        "required": [
+          "handle",
+          "link",
+          "platform"
+        ]
       }
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
     {
-      "name": "default",
-      "pageBundle": false,
+      "name": "blogpost",
+      "pageBundle": true,
+      "fileType": "md",
       "fields": [
         {
           "title": "Title",
@@ -74,19 +79,49 @@
         {
           "title": "Tags",
           "name": "tags",
-          "type": "tags"
-        },
-        {
-          "title": "Categories",
-          "name": "categories",
-          "type": "categories"
+          "type": "tags",
+          "default": []
         },
         {
           "title": "lastmod",
           "name": "lastmod",
           "type": "datetime"
+        },
+        {
+          "title": "type",
+          "name": "type",
+          "type": "string"
         }
       ]
     }
-  ]
+  ],
+  "frontMatter.content.snippets": {
+    "Spoiler": {
+      "description": "An extendable spoiler element.",
+      "body": [
+        "{{< spoiler hint=\"[[hint]]\" open=\"[[open]]\" >}}",
+        "  [[&selection]]",
+        "{{</ spoiler >}}"
+      ],
+      "fields": [
+        {
+          "name": "hint",
+          "title": "Hint",
+          "type": "string"
+        },
+        {
+          "name": "open",
+          "title": "Open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "selection",
+          "title": "Selection",
+          "type": "string",
+          "default": "FM_SELECTED_TEXT"
+        }
+      ]
+    }
+  }
 }

@@ -1,20 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@400;700&display=swap");
 
 // Bulma overrides
 $family-sans-serif: "Inter", "Helvetica", "Arial", sans-serif;
-$red: #f38ba0;
-$green: #edf6e5;
-$cyan: #b5eaea;
+$family-serif: "Arvo", sans-serif;
+$family-monospace: "Inconsolata", monospace;
+
 $navbar-dropdown-offset: -16px;
 
 @import "bulma/bulma.sass";
+@import "chromastyle.scss";
+
+$collapsible-chevron-color: $cyan;
 
 body {
   background-color: $white;
-}
-
-.section.main {
-  margin: 0 auto;
 }
 
 .navbar {
@@ -36,7 +35,6 @@ body {
 }
 
 .navbar-item.navbar-vertical-divider {
-  
   &::after {
     content: "|";
     font-weight: $weight-bold;
@@ -44,13 +42,130 @@ body {
   }
 }
 
+.navbar-menu .navbar-socials {
+  display: flex;
+  align-items: stretch;
+
+  @include until($navbar-breakpoint) {
+    justify-content: center;
+    .navbar-vertical-divider {
+      display: none;
+    }
+  }
+}
+
 a.tax-category {
   color: $red;
 }
 
-.content table {
-  &.center {
-    width: auto;
-    margin: 0 auto;
+.content {
+  table {
+    &.center {
+      width: auto;
+      margin: 0 auto;
+    }
   }
+
+  .is-info {
+    background-color: $info-light;
+    &blockquote {
+      border-left-color: $info;
+    }
+  }
+}
+
+/* Collapsible */
+details:not(.raw) {
+  @extend .box;
+
+  transition-duration: $speed;
+  transition-property: background-color;
+
+  summary {
+    position: relative;
+
+    cursor: pointer;
+    user-select: none;
+
+    list-style: none;
+    font-weight: $weight-bold;
+
+    &::after {
+      content: "";
+      mask-image: url("https://unpkg.com/ionicons@5.5.2/dist/svg/chevron-up.svg");
+      mask-image: url("https://unpkg.com/ionicons@5.5.2/dist/svg/chevron-up.svg");
+      mask-repeat: no-repeat; 
+      mask-type: luminance;
+      mask-size: 1.25em;
+      background-size: 1.25em;
+      background-image: radial-gradient($collapsible-chevron-color 60%, transparent 50%); // To avoid jagged edges while rotating
+
+      position: absolute;
+      top: .2rem;
+      right: 0;
+
+      width: 1.25em;
+      height: 1.25em;
+
+      transition-duration: $speed;
+      transition-property: transform;
+    }
+  }
+
+  &[open] > summary {
+    margin-bottom: $box-padding;
+    padding: 0;
+  }
+
+  &:not([open]) {
+    background-color: $white-bis;
+    padding: 0;
+    box-shadow: none;
+
+    &:hover {
+      background-color: $white-ter;
+    }
+
+    & > summary {
+      padding: $box-padding;
+      &::after {
+        transform: rotate(180deg);
+        top: $box-padding + .2rem;
+        right: $box-padding;
+      }
+    }
+  }
+}
+
+.content pre {
+  @include block(1rem);
+
+  code {
+    white-space: pre-wrap;
+  }
+}
+
+div.html-preview {
+  &:hover > .column:nth-child(2) {
+    color: $orange;
+  }
+
+  .column:nth-child(2) {
+    transition: color $speed $easing;
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  .column:last-child {
+    background-color: $background;
+    border-top: 5px solid $border;
+    align-self: stretch;
+  }
+}
+
+.article-header .subtitle {
+  font-family: $family-serif;
+  font-style: italic;
+  color: $blue;
 }

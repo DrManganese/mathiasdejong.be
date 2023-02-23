@@ -1,3 +1,29 @@
 {{ define "main" }}
-    {{ .Content }}
+{{ $text := `<img src="/cupcake-1264081_1280.jpg" width=100 style="float:right;" >[Cupcake ipsum](http://www.cupcakeipsum.com) dolor sit amet biscuit sugar plum. Gummi bears chocolate bar soufflé candy donut chupa chups cheesecake. Chocolate croissant cupcake cookie liquorice powder gummies pudding.` | markdownify | safeHTML }}
+<div class="columns is-multiline">
+  <div class="column is-full" style="font-family: none;">
+    <details class="raw" open>
+      <summary>Cupcake Ipsum</summary>
+      {{ $text }}
+    </details>
+  </div>
+  <div class="class column is-narrow is-full m-0 p-0" style="width: 100%;">
+    <ion-icon name="arrow-down" style="margin: 0 auto; display: block;"></ion-icon>
+  </div>
+  <div class="column is-full">
+    <details>
+      <summary>Cupcake Ipsum</summary>
+      {{ $text }}
+    </details>
+  </div>
+  <div class="class column is-narrow is-full m-0 p-0" style="width: 100%;">
+    <ion-icon name="arrow-down" style="margin: 0 auto; display: block;"></ion-icon>
+  </div>
+  <div class="column is-full">
+    <details open>
+      <summary>Cupcake Ipsum</summary>
+      {{ $text }}
+    </details>
+  </div>
+</div>
 {{ end }}

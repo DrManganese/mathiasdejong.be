@@ -5,17 +5,25 @@ theme = "mathiasdejongbe"
 
 [params]
     logo = "img/avatar.jpg"
+    default_spoiler_summary = "Click to expand..."
 
 [menu]
     [[menu.main]]
         name = "Posts"
-        url = "/post/"
+        url = "/posts/"
         weight = 1
-    [[menu.main]]
-        name = "Categories"
-        url = "/categories/"
-        weight = 2
     [[menu.main]]
         name = "Tags"
         url = "/tags/"
-        weight = 3
+        weight = 2
+
+[taxonomies]
+    tag = "tags"
+
+[markup]
+    [markup.highlight]
+        style = "nord"
+        noClasses = false
+
+[markup.goldmark.renderer]
+unsafe = true

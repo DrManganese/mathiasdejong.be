@@ -1,7 +1,9 @@
-{{ range .Site.Data.socials }}
-    {{ $icon := .icon | default "share-social" }}
-    <a href="{{ .link }}" class="navbar-item" target="_blank">
-        <ion-icon name="{{ $icon }}">ad</ion-icon>
-    </a>
-{{ end }}
-<span class="navbar-item navbar-vertical-divider"></span>
+<div class="navbar-socials">
+    {{ range .Site.Data.socials }}
+        {{ $icon := .icon | default "share-social" }}
+        <a href="{{ .link }}" class="navbar-item" target="_blank">
+            <ion-icon name="{{ $icon }}">ad</ion-icon>
+        </a>
+    {{ end }}
+    <span class="navbar-item navbar-vertical-divider"></span>
+</div>

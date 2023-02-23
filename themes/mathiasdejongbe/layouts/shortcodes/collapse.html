@@ -1,0 +1,15 @@
+{{ $Open := false}}
+{{ $Summary := .Site.Params.default_spoiler_summary | default "Hidden" }}
+{{ if .IsNamedParams }}
+    {{ $Summary = .Get "summary" | default $Summary }}
+    {{ $Open = eq (.Get "open") "true" }}
+{{ else }}
+    {{ $Summary = cond (eq (.Get 0) "open") $Summary (.Get 0) | default $Summary }}
+    {{ $Open = or (eq (.Get 0) "open") (eq (.Get 1) "open") }}
+{{ end }}
+<details {{ if $Open }}open{{ end }}>
+    <summary>{{ $Summary }}</summary>
+    <div class="content">
+        {{ .Inner | markdownify | safeHTML }}
+    </div>
+</details>
