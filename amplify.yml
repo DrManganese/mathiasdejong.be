@@ -8,10 +8,11 @@ frontend:
         - mv hugo /usr/bin/hugo
         - rm -rf hugo_extended_${VERSION_HUGO}_Linux-64bit.tar.gz
         - hugo version
-        - cd themes/mathiasdejongbe && npm install 
+        - npm install
     build:
       commands:
-        - hugo
+        - if [ "${AWS_BRANCH}" = "main" ]; then hugo; fi
+        - if [ "${AWS_BRANCH}" = "development" ]; then hugo -D; fi
   artifacts:
     baseDirectory: public
     files:
