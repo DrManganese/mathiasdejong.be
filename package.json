@@ -1,10 +1,8 @@
 {
     "dependencies": {
         "autoprefixer": "^10.4.13",
+        "bulma": "^0.9.4",
         "postcss": "^8.4.21",
         "postcss-cli": "^10.1.0"
-    },
-    "scripts": {
-        "postinstall": "cd themes/mathiasdejongbe && npm install"
     }
 }
