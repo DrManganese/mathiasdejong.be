@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "bulma": "^0.9.4"
+  }
+}

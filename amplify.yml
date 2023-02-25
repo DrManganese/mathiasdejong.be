@@ -3,11 +3,12 @@ frontend:
   phases:
     preBuild:
       commands:
-        - wget https://github.com/gohugoio/hugo/releases/download/v0.101.0/hugo_extended_0.101.0_Linux-64bit.tar.gz
-        - tar --overwrite -xf hugo_extended_0.101.0_Linux-64bit.tar.gz hugo
+        - wget https://github.com/gohugoio/hugo/releases/download/v${VERSION_HUGO}/hugo_extended_${VERSION_HUGO}_Linux-64bit.tar.gz
+        - tar --overwrite -xf hugo_extended_${VERSION_HUGO}_Linux-64bit.tar.gz hugo
         - mv hugo /usr/bin/hugo
-        - rm -rf hugo_extended_0.101.0_Linux-64bit.tar.gz
+        - rm -rf hugo_extended_${VERSION_HUGO}_Linux-64bit.tar.gz
         - hugo version
+        - cd themes/mathiasdejongbe && npm install 
     build:
       commands:
         - hugo
@@ -15,4 +16,6 @@ frontend:
     baseDirectory: public
     files:
       - '**/*'
-
+  cache:
+    paths:
+      - themes/mathiasdejongbe/node_modules/**/*
